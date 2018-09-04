@@ -6,6 +6,7 @@
 body {
   background: url(plain-bg.jpg);
   background-size: cover;
+  font-family: 'Mukta', sans-serif;
 }
 
 h1 {
