@@ -39,5 +39,8 @@ window.addEventListener('keydown', (e) => {
   if (e.key !== appState.lettersToType[appState.currentCharacter].letter.toLowerCase()) {
     appState.lettersToType[appState.currentCharacter].failures++
   }
+  else {
+    appState.currentCharacter++
+  }
   renderPhrase(appState.lettersToType)
 })
