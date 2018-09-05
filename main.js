@@ -9,7 +9,8 @@ var appState = {
 for (var i = 0; i < appState.phraseToType.length; i++) {
   appState.lettersToType.push({
     letter: appState.phraseToType[i],
-    index: i
+    index: i,
+    failures: 0
   })
 }
 
