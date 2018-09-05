@@ -25,6 +25,10 @@ h1 {
 
 .current-character {
   font-size: 36px;
-  color: red;
+  color: blue;
   text-decoration: underline;
+}
+
+.failed {
+  color: red;
 }

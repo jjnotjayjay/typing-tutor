@@ -20,6 +20,9 @@ function renderLetter(letter) {
   if (letter.index === appState.currentCharacter) {
     $letter.classList.add('current-character')
   }
+  if (letter.failures) {
+    $letter.classList.add('failed')
+  }
   return $letter
 }
 
