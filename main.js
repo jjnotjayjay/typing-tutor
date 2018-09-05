@@ -1,17 +1,24 @@
 var $app = document.querySelector('.app')
 
-var phraseToType = 'Amazingly few discotheques provide jukeboxes.'
+var appState = {
+  phraseToType: 'Amazingly few discotheques provide jukeboxes.',
+  lettersToType: [],
+  currentCharacter: 0
+}
 
-var lettersToType = []
-for (var i = 0; i < phraseToType.length; i++) {
-  lettersToType.push({
-    letter: phraseToType[i]
+for (var i = 0; i < appState.phraseToType.length; i++) {
+  appState.lettersToType.push({
+    letter: appState.phraseToType[i],
+    index: i
   })
 }
 
 function renderLetter(letter) {
   var $letter = document.createElement('span')
   $letter.textContent = letter.letter
+  if (letter.index === appState.currentCharacter) {
+    $letter.classList.add('current-character')
+  }
   return $letter
 }
 
@@ -21,4 +28,4 @@ function renderPhrase(phrase) {
   })
 }
 
-renderPhrase(lettersToType)
+renderPhrase(appState.lettersToType)

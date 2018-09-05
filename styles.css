@@ -22,3 +22,9 @@ h1 {
   font-size: 28px;
   text-shadow: 2px 2px 2px white;
 }
+
+.current-character {
+  font-size: 36px;
+  color: red;
+  text-decoration: underline;
+}
