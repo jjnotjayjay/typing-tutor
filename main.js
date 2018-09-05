@@ -33,5 +33,8 @@ function renderPhrase(phrase) {
 renderPhrase(appState.lettersToType)
 
 window.addEventListener('keydown', (e) => {
+  if (e.key !== appState.lettersToType[appState.currentCharacter].letter.toLowerCase()) {
+    appState.lettersToType[appState.currentCharacter].failures++
+  }
   renderPhrase(appState.lettersToType)
 })
