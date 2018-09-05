@@ -33,7 +33,21 @@ function renderPhrase(phrase) {
   })
 }
 
-renderPhrase(appState.lettersToType)
+function calculateScore() {
+  var totalFailures = 0
+  for (var i = 0; i < appState.lettersToType.length; i++) {
+    if (appState.lettersToType[i].failures) {
+      totalFailures++
+    }
+  }
+  return (appState.lettersToType.length - totalFailures) / appState.lettersToType.length
+}
+
+function renderScore() {
+  var $score = document.createElement('p')
+  $score.textContent = 'Your score was ' + calculateScore().toFixed(2) * 100 + '%!'
+  return $score
+}
 
 window.addEventListener('keydown', (e) => {
   if (e.key !== appState.lettersToType[appState.currentCharacter].letter.toLowerCase()) {
@@ -43,4 +57,9 @@ window.addEventListener('keydown', (e) => {
     appState.currentCharacter++
   }
   renderPhrase(appState.lettersToType)
+  if (appState.currentCharacter === appState.lettersToType.length) {
+    $app.appendChild(renderScore())
+  }
 })
+
+renderPhrase(appState.lettersToType)
