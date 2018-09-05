@@ -9,7 +9,8 @@ var appState = {
 for (var i = 0; i < appState.phraseToType.length; i++) {
   appState.lettersToType.push({
     letter: appState.phraseToType[i],
-    index: i
+    index: i,
+    failures: 0
   })
 }
 
@@ -19,13 +20,27 @@ function renderLetter(letter) {
   if (letter.index === appState.currentCharacter) {
     $letter.classList.add('current-character')
   }
+  if (letter.failures) {
+    $letter.classList.add('failed')
+  }
   return $letter
 }
 
 function renderPhrase(phrase) {
+  $app.innerHTML = ''
   phrase.forEach(char => {
     $app.appendChild(renderLetter(char))
   })
 }
 
 renderPhrase(appState.lettersToType)
+
+window.addEventListener('keydown', (e) => {
+  if (e.key !== appState.lettersToType[appState.currentCharacter].letter.toLowerCase()) {
+    appState.lettersToType[appState.currentCharacter].failures++
+  }
+  else {
+    appState.currentCharacter++
+  }
+  renderPhrase(appState.lettersToType)
+})
