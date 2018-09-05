@@ -2,7 +2,8 @@ var $app = document.querySelector('.app')
 
 var appState = {
   phraseToType: 'Amazingly few discotheques provide jukeboxes.',
-  lettersToType: []
+  lettersToType: [],
+  currentCharacter: 0
 }
 
 for (var i = 0; i < appState.phraseToType.length; i++) {
