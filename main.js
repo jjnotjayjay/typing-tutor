@@ -24,9 +24,14 @@ function renderLetter(letter) {
 }
 
 function renderPhrase(phrase) {
+  $app.innerHTML = ''
   phrase.forEach(char => {
     $app.appendChild(renderLetter(char))
   })
 }
 
 renderPhrase(appState.lettersToType)
+
+window.addEventListener('keydown', (e) => {
+  renderPhrase(appState.lettersToType)
+})
