@@ -43,6 +43,12 @@ function calculateScore() {
   return (appState.lettersToType.length - totalFailures) / appState.lettersToType.length
 }
 
+function renderScore() {
+  var $score = document.createElement('p')
+  $score.textContent = 'Your score was ' + calculateScore().toFixed(2) + '%!'
+  return $score
+}
+
 window.addEventListener('keydown', (e) => {
   if (e.key !== appState.lettersToType[appState.currentCharacter].letter.toLowerCase()) {
     appState.lettersToType[appState.currentCharacter].failures++
