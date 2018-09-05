@@ -1,14 +1,24 @@
-var phrase = 'Amazingly few discotheques provide jukeboxes.'
+var $app = document.querySelector('.app')
 
-var letters = []
-for (var i = 0; i < phrase.length; i++) {
-  letters.push({
-    letter: phrase[i]
+var phraseToType = 'Amazingly few discotheques provide jukeboxes.'
+
+var lettersToType = []
+for (var i = 0; i < phraseToType.length; i++) {
+  lettersToType.push({
+    letter: phraseToType[i]
   })
 }
 
 function renderLetter(letter) {
   var $letter = document.createElement('span')
-  $letter.textContent = letter
+  $letter.textContent = letter.letter
   return $letter
 }
+
+function renderPhrase(phrase) {
+  phrase.forEach(char => {
+    $app.appendChild(renderLetter(char))
+  })
+}
+
+renderPhrase(lettersToType)
