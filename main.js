@@ -1,11 +1,13 @@
 var $app = document.querySelector('.app')
 
-var phraseToType = 'Amazingly few discotheques provide jukeboxes.'
+var appState = {
+  phraseToType: 'Amazingly few discotheques provide jukeboxes.',
+  lettersToType: []
+}
 
-var lettersToType = []
-for (var i = 0; i < phraseToType.length; i++) {
-  lettersToType.push({
-    letter: phraseToType[i]
+for (var i = 0; i < appState.phraseToType.length; i++) {
+  appState.lettersToType.push({
+    letter: appState.phraseToType[i]
   })
 }
 
@@ -21,4 +23,4 @@ function renderPhrase(phrase) {
   })
 }
 
-renderPhrase(lettersToType)
+renderPhrase(appState.lettersToType)
