@@ -45,7 +45,7 @@ function calculateScore() {
 
 function renderScore() {
   var $score = document.createElement('p')
-  $score.textContent = 'Your score was ' + calculateScore().toFixed(2) + '%!'
+  $score.textContent = 'Your score was ' + calculateScore().toFixed(2) * 100 + '%!'
   return $score
 }
 
@@ -57,6 +57,9 @@ window.addEventListener('keydown', (e) => {
     appState.currentCharacter++
   }
   renderPhrase(appState.lettersToType)
+  if (appState.currentCharacter === appState.lettersToType.length) {
+    $app.appendChild(renderScore())
+  }
 })
 
 renderPhrase(appState.lettersToType)
