@@ -1,17 +1,20 @@
 var $app = document.querySelector('.app')
 
 var appState = {
-  phraseToType: 'Amazingly few discotheques provide jukeboxes.',
+  phraseToType: ['Amazingly few discotheques provide jukeboxes.', 'Woohoo there is now a second phrase to type'],
   lettersToType: [],
-  currentCharacter: 0
+  currentCharacter: 0,
+  currentPhrase: 1
 }
 
-for (var i = 0; i < appState.phraseToType.length; i++) {
-  appState.lettersToType.push({
-    letter: appState.phraseToType[i],
-    index: i,
-    failures: 0
-  })
+function phraseToLetters() {
+  for (var i = 0; i < appState.phraseToType[appState.currentPhrase].length; i++) {
+    appState.lettersToType.push({
+      letter: appState.phraseToType[appState.currentPhrase][i],
+      index: i,
+      failures: 0
+    })
+  }
 }
 
 function renderLetter(letter) {
@@ -62,4 +65,5 @@ window.addEventListener('keydown', (e) => {
   }
 })
 
+phraseToLetters()
 renderPhrase(appState.lettersToType)
